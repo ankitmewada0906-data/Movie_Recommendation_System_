@@ -113,7 +113,7 @@ def api_get_json_with_retry(
                 return r.json(), None
 
             # Retry only for temporary server errors
-            if r.status_code in (502, 503, 504):
+            if r.status_code in (429, 502, 503, 504):
 
                 if attempt < max_retries - 1:
                     time.sleep(retry_delay)
